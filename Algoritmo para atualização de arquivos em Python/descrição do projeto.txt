@@ -1,9 +1,64 @@
-Descrição do projeto
+1. Descrição do projeto
 Em uma empresa de saúde, é necessário atualizar regularmente um arquivo que controla o acesso a conteúdos restritos. Esse arquivo lista os endereços IP dos funcionários autorizados a acessar uma sub-rede restrita onde são mantidos registros pessoais de pacientes.
 
 A lista de permissões (allow list) contém os IPs autorizados, enquanto uma lista de remoção (remove list) identifica os endereços IP de funcionários que não devem mais ter acesso. 
 A tarefa é desenvolver um algoritmo em Python que verifique se algum endereço IP na lista de permissão aparece também na lista de remoção. 
 Caso isso ocorra, o algoritmo deve remover esses IPs do arquivo de lista de permissões, atualizando-o com a lista revisada.
 
-Resumo
-[Adicione conteúdo aqui.]
+2. Abra o arquivo que contém a lista de permissões e Leia o conteúdo do arquivo
+No meu algoritmo, a instrução with é usada com a função .open() no modo de leitura para abrir o arquivo de lista de permissões com o propósito de lê-lo. 
+O objetivo de abrir o arquivo é permitir que eu acesse os endereços IP armazenados no arquivo de lista de permissões. A palavra-chave with ajuda a gerenciar os recursos, 
+fechando o arquivo após a saída da instrução with. No código with open("allow_list, "r") as file:, a função open() possui dois parâmetros. 
+O primeiro identifica o arquivo a ser importado, e o segundo indica o que eu quero fazer com o arquivo. Neste caso, "r" indica que eu quero lê-lo. 
+O código também usa a palavra-chave as para atribuir uma variável chamada file; file armazena a saída da função .open() enquanto eu trabalho dentro da instrução with.
+
+Para ler o conteúdo do arquivo, usei o método .read() para convertê-lo em uma string. Ao utilizar a função .open() que inclui o argumento "r" para “ler,” 
+posso chamar a função .read() no corpo da instrução with. O método .read() converte o arquivo em uma string e me permite lê-lo. Apliquei o método .read() à variável 
+file identificada na instrução with. Em seguida, atribuí a saída em formato de string desse método à variável ip_addresses.
+
+Em resumo, este código lê o conteúdo do arquivo "allow_list.txt" em um formato de string que me permite, posteriormente, usar a string para organizar e extrair dados em 
+meu programa Python.
+
+3. Converta a string em uma lista
+Para remover endereços IP individuais da lista de permissões, eu precisava que ela estivesse no formato de lista. Portanto, em seguida, usei o método .split() para converter
+a string ip_addresses em uma lista:
+
+O método .split() é chamado ao ser anexado a uma variável do tipo string. Ele funciona convertendo o conteúdo de uma string em uma lista. O objetivo de dividir ip_addresses 
+em uma lista é facilitar a remoção de endereços IP da lista de permissões. Por padrão, o método .split() divide o texto por espaços em branco em elementos da lista. 
+Neste algoritmo, a função .split() pega os dados armazenados na variável ip_addresses, que é uma string de endereços IP separados por espaços em branco, e converte essa 
+string em uma lista de endereços IP. Para armazenar essa lista, eu a reatribui de volta à variável ip_addresses.
+
+4. Percorra a lista de remoção
+Uma parte fundamental do meu algoritmo envolve iterar pelos endereços IP que são elementos na remove_list. Para fazer isso, incorporei um loop for:
+
+O loop for em Python repete um código para uma sequência específica. O objetivo geral do loop for em um algoritmo Python como este é aplicar declarações de código específicas 
+a todos os elementos em uma sequência. A palavra-chave for inicia o loop for. Ela é seguida pela variável de loop element e pela palavra-chave in. 
+A palavra-chave in indica que deve-se iterar pela sequência ip_addresses e atribuir cada valor à variável de loop element.
+
+5. Remova os endereços IP que estão na lista de remoção
+Meu algoritmo requer a remoção de qualquer endereço IP da lista de permissões, ip_addresses, que também esteja contido em remove_list. Como não havia duplicatas em ip_addresses, 
+consegui usar o seguinte código para fazer isso:
+
+Primeiro, dentro do meu loop for, criei uma condição que avaliava se a variável de loop element estava ou não presente na lista ip_addresses. Fiz isso porque aplicar .remove() a 
+elementos que não estavam em ip_addresses resultaria em um erro.
+
+Então, dentro dessa condição, apliquei .remove() a ip_addresses. Passei a variável de loop element como argumento para que cada endereço IP que estivesse na remove_list fosse 
+removido de ip_addresses.
+
+6. Atualize o arquivo com a lista revisada de endereços IP
+Como etapa final do meu algoritmo, eu precisava atualizar o arquivo de lista de permissões com a lista revisada de endereços IP. Para fazer isso, primeiro precisava converter 
+a lista de volta em uma string. Usei o método .join() para isso:
+
+O método .join() combina todos os itens em um iterável em uma string. O método .join() é aplicado a uma string contendo caracteres que separarão os elementos no iterável uma 
+vez que sejam unidos em uma string. Neste algoritmo, usei o método .join() para criar uma string a partir da lista ip_addresses, para que eu pudesse passá-la como argumento ao 
+método .write() ao escrever no arquivo "allow_list.txt". Usei a string ("\n") como separador para instruir o Python a colocar cada elemento em uma nova linha.
+
+Em seguida, usei outra instrução with e o método .write() para atualizar o arquivo:
+
+7. Resumo
+Criei um algoritmo que remove endereços IP identificados na variável remove_list do arquivo "allow_list.txt" de endereços IP aprovados. Este algoritmo envolveu abrir o arquivo, 
+convertê-lo em uma string para leitura e, em seguida, converter essa string em uma lista armazenada na variável ip_addresses. Em seguida, iterei pelos endereços IP em remove_list.
+A cada iteração, avaliei se o elemento fazia parte da lista ip_addresses. Se sim, apliquei o método .remove() a ele para remover o elemento de ip_addresses. 
+Após isso, usei o método .join() para converter os ip_addresses de volta em uma string, para que eu pudesse sobrescrever o conteúdo do arquivo "allow_list.txt" com a lista 
+revisada de endereços IP.
+
