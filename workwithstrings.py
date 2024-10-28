@@ -1,5 +1,9 @@
 ####Trabalhando com Strings e listas####
 
+# Os dados String são dados que consistem em uma sequência ordenada de caracteres. 
+#   são usados para armazenar qualquer tipo de informação que não precise ser manipulada matematicamente
+# Um índice é um número atribuído a cada elemento em uma sequência que indica sua posição.
+
 # A notação de colchetes refere-se aos índices colocados entre colchetes
 # Os dados String são dados que consistem em uma sequência ordenada de caracteres
 # A função str() converte seu objeto de entrada em uma string
@@ -16,6 +20,13 @@
 # O método .append() é frequentemente usado com loops for para fazer a População de uma lista vazia com elementos
 # Semelhante ao método .index() usado para strings, o método .index() usado para listas encontra a primeira ocorrência de um elemento 
 #   em uma lista e retorna seu índice. Ele usa o elemento que está sendo pesquisado como entrada.
+# Uma expressão regular (RegEx) é uma sequência de caracteres que forma um padrão
+# Você pode usar esses símbolos adicionais para corresponder a tipos específicos de caracteres:
+#   . corresponde a todos os caracteres, inclusive símbolos
+#   \d corresponde a todos os dígitos únicos [0-9]
+#   \s corresponde a todos os espaços simples
+#   \. corresponde ao caractere de ponto final
+#   \w corresponde a qualquer caractere alfanumérico.
 
 
 
@@ -36,6 +47,8 @@ device_id_length = len("h32rb17")
 if device_id_length == 7:
     print("The device ID has 7 characters.")
 
+#Método .upper()
+print("Information Technology".upper())
 
 #O método .index()  encontra a primeira ocorrência da entrada em uma cadeia de caracteres e retorna sua localização.
 print("h32rb17".index("r"))
@@ -88,3 +101,43 @@ username_index = username_list.index("tshah")
 print(username_index)
 
 ###Expressões Regulares####
+# O primeiro parâmetro é um padrão de expressão regular que consiste apenas nos caracteres alfanuméricos "ts". 
+#   o segundo parâmetro, "tsnow, tshah, bmoreno", é a string que será pesquisada.
+import re
+re.findall("ts", "tsnow, tshah, bmoreno")
+
+# Executar esse código para explorar o que re.findall() retorna ao aplicar a expressão regular de "\w" ao ID do dispositivo de "h32rb17"
+import re
+re.findall("\w", "h32rb17")
+
+#O código a seguir pesquisa o mesmo item do exemplo anterior, mas muda o padrão da expressão regular para "\d"
+import re
+re.findall("\d", "h32rb17")
+
+#indicar um número específico de repetições a serem permitidas, você pode colocar esse número entre colchetes ({ }) após o caractere ou símbolo
+import re
+re.findall("\d{2}", "h32rb17 k825t0m c2994eh")
+
+# pode especificar um intervalo entre colchetes, separando dois números com uma vírgula. 
+#   o primeiro número é o número mínimo de repetições e o segundo número é o número máximo de repetições.
+import re
+re.findall("\d{1,3}", "h32rb17 k825t0m c2994eh")
+
+#Para cada funcionário, a seguinte cadeia de caracteres contém o IDS do funcionário, o nome de usuário seguido de dois pontos (:), 
+#   as tentativas de login do dia e o departamento. Esse código é para extrair o nome de usuário e as tentativas de login, sem o número de IDS ou o departamento do funcionário.
+import re
+pattern = "\w+:\s\d+"
+employee_logins_string = "1001 bmoreno: 12 Marketing 1002 tshah: 7 Human Resources 1003 sgilmore: 5 Finance"
+print(re.findall(pattern, employee_logins_string))
+#ou se eu quisesse pegar o número do IDS de cada usuário
+import re
+pattern = "\d+\s\w+:\s\d+"
+employee_logins_string = "1001 bmoreno: 12 Marketing 1002 tshah: 7 Human Resources 1003 sgilmore: 5 Finance"
+print(re.findall(pattern, employee_logins_string))
+
+#ou se eu quisesse somente IDS
+import re
+pattern = r"\b\d{4}\b"
+employee_logins_string = "1001 bmoreno: 12 Marketing 1002 tshah: 7 Human Resources 1003 sgilmore: 5 Finance"
+print(re.findall(pattern, employee_logins_string))
+

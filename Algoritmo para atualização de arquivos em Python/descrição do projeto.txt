@@ -1,0 +1,9 @@
+Descrição do projeto
+Em uma empresa de saúde, é necessário atualizar regularmente um arquivo que controla o acesso a conteúdos restritos. Esse arquivo lista os endereços IP dos funcionários autorizados a acessar uma sub-rede restrita onde são mantidos registros pessoais de pacientes.
+
+A lista de permissões (allow list) contém os IPs autorizados, enquanto uma lista de remoção (remove list) identifica os endereços IP de funcionários que não devem mais ter acesso. 
+A tarefa é desenvolver um algoritmo em Python que verifique se algum endereço IP na lista de permissão aparece também na lista de remoção. 
+Caso isso ocorra, o algoritmo deve remover esses IPs do arquivo de lista de permissões, atualizando-o com a lista revisada.
+
+Resumo
+[Adicione conteúdo aqui.]
