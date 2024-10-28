@@ -1,4 +1,5 @@
 #Abra o arquivo que contém a lista de permissões e Leia o conteúdo do arquivo
+
 remove_list = ["192.168.97.225", "192.168.158.170", "192.168.201.40", "192.168.58.57"]
 
 with open("allow_list.txt", "r") as file:

@@ -62,3 +62,23 @@ A cada iteração, avaliei se o elemento fazia parte da lista ip_addresses. Se s
 Após isso, usei o método .join() para converter os ip_addresses de volta em uma string, para que eu pudesse sobrescrever o conteúdo do arquivo "allow_list.txt" com a lista 
 revisada de endereços IP.
 
+A lista inicialmente possuia a seguinte lista de ip's: 
+192.168.25.60
+192.168.205.12
+192.168.97.225
+192.168.6.9
+192.168.52.90
+192.168.158.170
+192.168.90.124
+192.168.186.176
+192.168.133.188
+192.168.203.198
+192.168.201.40
+192.168.218.219
+192.168.52.37
+192.168.156.224
+192.168.60.153
+192.168.58.57
+192.168.69.116
+
+Ao rodar o código ela alterou e retirou os ip's que eu não gostaria.
